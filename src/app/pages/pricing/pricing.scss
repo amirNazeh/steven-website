@@ -33,6 +33,12 @@
   min-height: 100%;
   color: #1b1b1b;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-card__intro {
+  min-height: 220px;
 }
 
 .pricing-card__title {
@@ -124,6 +130,10 @@
 @media (max-width: 991px) {
   .pricing-page {
     padding: 100px 0 80px;
+  }
+
+  .pricing-card__intro {
+    min-height: 0;
   }
 }
 

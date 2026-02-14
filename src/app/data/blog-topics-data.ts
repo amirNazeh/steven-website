@@ -32,7 +32,7 @@ export const TOPIC_POSTS: BlogPost[] = [
     type: 'blog',
     blocks: [
       {
-        title: 'paragraph',
+        title: '',
         paragraphs: [
           'Hello, I am Stephen. I am 26, and for the past years, I have been part of the job market as a graphic designer. And recently, like many, I have been swept into hustle culture -- the loud voice that tells us we must always be doing more, working harder, achieving faster. That our worth is measured by how much we produce, how much we earn, and how much we impress.',
           'But something deep inside me began to push back.'
