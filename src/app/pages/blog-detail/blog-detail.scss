@@ -158,5 +158,12 @@
     border-left: none;
     padding-left: 0;
     margin-bottom: 24px;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .blog-detail__share-label {
+    width: 100%;
   }
 }

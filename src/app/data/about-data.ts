@@ -10,8 +10,9 @@ export type AboutBlock = {
 export const ABOUT_CONTENT: { blocks: AboutBlock[] } = {
   blocks: [
     {
-      title: 'Why do so many people work hard, succeed on the outside, and still feel empty on the inside?',
+      title: '',
       paragraphs: [
+        'Why do so many people work hard, succeed on the outside, and still feel empty on the inside?',
         'I saw it everywhere.',
         'Projects that look strong but feel hollow. Brands that sell well but say nothing. People chasing money, status, and growth -- while slowly losing themselves.',
         'And at some point, I realized something uncomfortable:',
