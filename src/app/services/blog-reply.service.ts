@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 
 export type BlogReplyPayload = {
@@ -12,20 +12,20 @@ export type BlogReplyPayload = {
 
 @Injectable({ providedIn: 'root' })
 export class BlogReplyService {
-  //const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_DFml0MP76uwaUu61ujvomYdDwEIssAVocoDYlI9b_bGLCPvvkHP4MqEWZXnHkyEm/exec';
-
-  private readonly GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzAAY5vj3N9Iw0glLvSwMK1TwoE6iNHBG614oSgcc3DIM4OnXqTasVnX25W0yBSdpDT/exec';
-  private readonly PROXY_URL = 'https://corsproxy.io/?url='; // CORS proxy مجاني
+  private readonly GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxcdk2ejPo7XO4Whr2RdR8AIuZcw_kjWFU8l3ZGoHkf6c8Xx6qMkh8k0QmwYXLjfiHx/exec';
 
   constructor(private readonly http: HttpClient) {}
 
   async sendReply(payload: BlogReplyPayload): Promise<void> {
-    const url = this.PROXY_URL + encodeURIComponent(this.GOOGLE_SCRIPT_URL);
+    const params = new HttpParams()
+      .set('Blogname', payload.Blogname)
+      .set('BlogLink', payload.BlogLink)
+      .set('clientemail', payload.clientemail)
+      .set('Clientname', payload.Clientname)
+      .set('Comment', payload.Comment);
 
     await firstValueFrom(
-      this.http.post(url, payload, {
-        headers: { 'Content-Type': 'application/json' }
-      })
+      this.http.get(this.GOOGLE_SCRIPT_URL, { params })
     );
   }
 }
