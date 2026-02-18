@@ -14,7 +14,7 @@ export type BlogReplyPayload = {
 export class BlogReplyService {
   //const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_DFml0MP76uwaUu61ujvomYdDwEIssAVocoDYlI9b_bGLCPvvkHP4MqEWZXnHkyEm/exec';
 
-  private readonly GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyNihcJg0UyGMlqaqdk5OoEysQfE4Maj0H9jxWrcEZJKm7FZtEy0jBkhFfLja_5IMX6/exec';
+  private readonly GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzAAY5vj3N9Iw0glLvSwMK1TwoE6iNHBG614oSgcc3DIM4OnXqTasVnX25W0yBSdpDT/exec';
   private readonly PROXY_URL = 'https://corsproxy.io/?url='; // CORS proxy مجاني
 
   constructor(private readonly http: HttpClient) {}
