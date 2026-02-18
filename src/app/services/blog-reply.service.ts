@@ -11,7 +11,7 @@ export type BlogReplyPayload = {
 };
 
 //const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_DFml0MP76uwaUu61ujvomYdDwEIssAVocoDYlI9b_bGLCPvvkHP4MqEWZXnHkyEm/exec';
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzSelb8aPefAWCN1z9G_qpyFxcZU-K3_XOnqAFaB-3BEwxDhquN10uvordqpyGg4NyP/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyNihcJg0UyGMlqaqdk5OoEysQfE4Maj0H9jxWrcEZJKm7FZtEy0jBkhFfLja_5IMX6/exec';
 
 @Injectable({ providedIn: 'root' })
 export class BlogReplyService {
