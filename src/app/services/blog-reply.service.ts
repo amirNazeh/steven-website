@@ -10,16 +10,20 @@ export type BlogReplyPayload = {
   Comment: string;
 };
 
-//const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_DFml0MP76uwaUu61ujvomYdDwEIssAVocoDYlI9b_bGLCPvvkHP4MqEWZXnHkyEm/exec';
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyNihcJg0UyGMlqaqdk5OoEysQfE4Maj0H9jxWrcEZJKm7FZtEy0jBkhFfLja_5IMX6/exec';
-
 @Injectable({ providedIn: 'root' })
 export class BlogReplyService {
+  //const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_DFml0MP76uwaUu61ujvomYdDwEIssAVocoDYlI9b_bGLCPvvkHP4MqEWZXnHkyEm/exec';
+
+  private readonly GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyNihcJg0UyGMlqaqdk5OoEysQfE4Maj0H9jxWrcEZJKm7FZtEy0jBkhFfLja_5IMX6/exec';
+  private readonly PROXY_URL = 'https://corsproxy.io/?url='; // CORS proxy مجاني
+
   constructor(private readonly http: HttpClient) {}
 
   async sendReply(payload: BlogReplyPayload): Promise<void> {
+    const url = this.PROXY_URL + encodeURIComponent(this.GOOGLE_SCRIPT_URL);
+
     await firstValueFrom(
-      this.http.post(GOOGLE_SCRIPT_URL, payload, {
+      this.http.post(url, payload, {
         headers: { 'Content-Type': 'application/json' }
       })
     );
