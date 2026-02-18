@@ -12,7 +12,7 @@ export type BlogReplyPayload = {
 
 @Injectable({ providedIn: 'root' })
 export class BlogReplyService {
-  private readonly GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxcdk2ejPo7XO4Whr2RdR8AIuZcw_kjWFU8l3ZGoHkf6c8Xx6qMkh8k0QmwYXLjfiHx/exec';
+  private readonly GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyTKEpuM7dsVbpu4Uqpo7mdbpplJiihs7pkCkiGW1_SK8N3reo0sk05o9Ksb2wI0riJ/exec';
 
   constructor(private readonly http: HttpClient) {}
 
