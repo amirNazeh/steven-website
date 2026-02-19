@@ -64,6 +64,43 @@ export const PRICING_CONTENT = {
       ]
     }
   ],
+  faqs: [
+    {
+      question: 'What industries do you serve?',
+      answer: 'We build brand identities across many sectors, with frequent work in:',
+      bullets: [
+        'B2B & SaaS companies',
+        'Financial & professional services',
+        'Health & wellness brands',
+        'Education & nonprofit organizations',
+        'Startups & emerging businesses'
+      ]
+    },
+    {
+      question: 'What is the ROI of a strong brand identity?',
+      answer: 'A clear identity helps you stand out and scale more efficiently. Typical benefits include stronger recognition, deeper loyalty, more consistent marketing, and better appeal to investors and stakeholders.'
+    },
+    {
+      question: 'What is the difference between brand identity and branding?',
+      answer: 'Brand identity is the visual and messaging system. Branding is the ongoing work of managing, applying, and evolving that system over time.'
+    },
+    {
+      question: 'How long does a brand identity project take?',
+      answer: 'Most projects run about 4–8 weeks depending on scope, with faster timelines available when needed.'
+    },
+    {
+      question: 'Can you work with our internal design or marketing team?',
+      answer: 'Yes. We collaborate closely and integrate with your internal workflows throughout the project.'
+    },
+    {
+      question: 'Do you offer logo design only?',
+      answer: 'Yes. We can scope a focused logo engagement when that is the right fit.'
+    },
+    {
+      question: 'What if we already have some brand elements?',
+      answer: 'We can audit what exists, refine it, and expand it into a cohesive system.'
+    }
+  ],
   footer: {
     lead: 'Here for something else?',
     action: 'Get in touch',

@@ -3,6 +3,7 @@ import { BlogCard } from '../../components/blog-card/blog-card';
 import { BLOG_SECTION, PopularBlog, BlogPost } from '../../data/blog-popular-data';
 import { TOPIC_FILTERS, TOPIC_POSTS, TYPE_FILTERS, TopicFilter } from '../../data/blog-topics-data';
 import { Hero } from '../../components/hero/hero';
+import { BlogSubscribeService } from '../../services/blog-subscribe.service';
 
 @Component({
   selector: 'app-blog-page',
@@ -20,6 +21,9 @@ export class BlogPage {
   selectedFilter = this.topicFilters[0]?.value ?? 'all';
   selectedType = this.typeFilters[0]?.value ?? 'all';
   subscribeMessage = '';
+  isSubscribing = false;
+
+  constructor(private readonly blogSubscribeService: BlogSubscribeService) {}
 
   get filteredTopics(): BlogPost[] {
     return this.topicSource.filter((post) => {
@@ -37,25 +41,22 @@ export class BlogPage {
     this.selectedType = value;
   }
 
-  subscribe(event: Event, email: string): void {
+  async subscribe(event: Event, email: string): Promise<void> {
     event.preventDefault();
     const trimmed = email.trim();
     if (!trimmed) {
       this.subscribeMessage = 'Please enter a valid email.';
       return;
     }
-
+    this.isSubscribing = true;
+    this.subscribeMessage = '';
     try {
-      const key = 'blog_subscribers';
-      const raw = localStorage.getItem(key);
-      const list = raw ? (JSON.parse(raw) as string[]) : [];
-      if (!list.includes(trimmed)) {
-        list.push(trimmed);
-        localStorage.setItem(key, JSON.stringify(list));
-      }
+      await this.blogSubscribeService.subscribeEmail(trimmed);
       this.subscribeMessage = 'Thanks! You are on the list.';
     } catch {
-      this.subscribeMessage = 'Saved. I will reach out when a new post is live.';
+      this.subscribeMessage = 'Something went wrong. Please try again.';
+    } finally {
+      this.isSubscribing = false;
     }
   }
 }

@@ -77,7 +77,7 @@
                 <span>Save my name, email, and website in this browser for the next time I comment.</span>
               </label>
               <button class="reply-form__submit" type="submit" [disabled]="replyForm.invalid || isSubmitting">
-                {{ isSubmitting ? 'Sending...' : 'Post Comment' }}
+                {{ isSubmitting ? 'Sending...' : 'Sent Comment' }}
               </button>
               @if (submitMessage) {
                 <p class="reply-form__message">{{ submitMessage }}</p>

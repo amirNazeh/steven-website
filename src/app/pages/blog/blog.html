@@ -26,7 +26,9 @@
       </div>
       <form class="blog-subscribe__form" (submit)="subscribe($event, emailInput.value)">
         <input #emailInput type="email" placeholder="Your email address" required />
-        <button type="submit">Notify me</button>
+        <button type="submit" [disabled]="isSubscribing">
+          {{ isSubscribing ? 'Sending...' : 'Notify me' }}
+        </button>
       </form>
       @if (subscribeMessage) {
         <p class="blog-subscribe__message">{{ subscribeMessage }}</p>

@@ -17,6 +17,7 @@ export class BlogDetail {
   isSubmitting = false;
   submitMessage = '';
   readonly replyForm;
+  private readonly storageKey = 'blog_reply_identity';
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -27,11 +28,13 @@ export class BlogDetail {
     const allPosts = [...PopularBlog, ...TOPIC_POSTS];
     this.post = allPosts.find((item) => item.slug === slug);
 
+    const saved = this.loadSavedIdentity();
+
     this.replyForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      name: [saved?.name ?? '', Validators.required],
+      email: [saved?.email ?? '', [Validators.required, Validators.email]],
       comment: ['', Validators.required],
-      save: [false]
+      save: [Boolean(saved)]
     });
   }
 
@@ -77,7 +80,16 @@ export class BlogDetail {
       await this.replyService.sendReply(payload);
 
       this.submitMessage = 'Thanks! Your comment was sent.';
-      this.replyForm.reset({ save: false });
+      if (this.replyForm.value.save) {
+        localStorage.setItem(this.storageKey, JSON.stringify({
+          name: this.replyForm.value.name ?? '',
+          email: this.replyForm.value.email ?? ''
+        }));
+        this.replyForm.patchValue({ comment: '' });
+      } else {
+        localStorage.removeItem(this.storageKey);
+        this.replyForm.reset({ save: false });
+      }
     } catch {
       this.submitMessage = 'Sorry, something went wrong. Please try again.';
     } finally {
@@ -102,4 +114,14 @@ export class BlogDetail {
         return `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`;
     }
   }
+
+  private loadSavedIdentity(): { name: string; email: string } | null {
+    try {
+      const raw = localStorage.getItem(this.storageKey);
+      return raw ? (JSON.parse(raw) as { name: string; email: string }) : null;
+    } catch {
+      return null;
+    }
+  }
+
 }

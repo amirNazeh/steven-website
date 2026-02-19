@@ -40,6 +40,30 @@
       }
     </div>
 
+    <section class="pricing-faqs">
+      <div class="row g-4">
+        <div class="col-12 col-lg-4">
+          <h2>Brand Identity</h2>
+          <h3>FAQs</h3>
+        </div>
+        <div class="col-12 col-lg-8">
+          @for (faq of content.faqs; track faq.question) {
+            <article class="pricing-faq">
+              <h4>{{ faq.question }}</h4>
+              <p>{{ faq.answer }}</p>
+              @if (faq.bullets?.length) {
+                <ul>
+                  @for (item of faq.bullets; track item) {
+                    <li>{{ item }}</li>
+                  }
+                </ul>
+              }
+            </article>
+          }
+        </div>
+      </div>
+    </section>
+
     <p class="pricing-footer">
       {{ content.footer.lead }}
       <span class="pricing-footer__link">{{ content.footer.action }}</span>
