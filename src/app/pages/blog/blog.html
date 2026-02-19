@@ -19,6 +19,20 @@
       }
     </div>
 
+    <div class="blog-subscribe">
+      <div class="blog-subscribe__content">
+        <h3>Get new posts in your inbox</h3>
+        <p>Leave your email and I’ll send you updates whenever a new blog is published.</p>
+      </div>
+      <form class="blog-subscribe__form" (submit)="subscribe($event, emailInput.value)">
+        <input #emailInput type="email" placeholder="Your email address" required />
+        <button type="submit">Notify me</button>
+      </form>
+      @if (subscribeMessage) {
+        <p class="blog-subscribe__message">{{ subscribeMessage }}</p>
+      }
+    </div>
+
     <div class="blog-topics">
       <div class="blog-topics__header">
         <div>

@@ -19,6 +19,7 @@ export class BlogPage {
 
   selectedFilter = this.topicFilters[0]?.value ?? 'all';
   selectedType = this.typeFilters[0]?.value ?? 'all';
+  subscribeMessage = '';
 
   get filteredTopics(): BlogPost[] {
     return this.topicSource.filter((post) => {
@@ -34,5 +35,27 @@ export class BlogPage {
 
   selectType(value: string): void {
     this.selectedType = value;
+  }
+
+  subscribe(event: Event, email: string): void {
+    event.preventDefault();
+    const trimmed = email.trim();
+    if (!trimmed) {
+      this.subscribeMessage = 'Please enter a valid email.';
+      return;
+    }
+
+    try {
+      const key = 'blog_subscribers';
+      const raw = localStorage.getItem(key);
+      const list = raw ? (JSON.parse(raw) as string[]) : [];
+      if (!list.includes(trimmed)) {
+        list.push(trimmed);
+        localStorage.setItem(key, JSON.stringify(list));
+      }
+      this.subscribeMessage = 'Thanks! You are on the list.';
+    } catch {
+      this.subscribeMessage = 'Saved. I will reach out when a new post is live.';
+    }
   }
 }

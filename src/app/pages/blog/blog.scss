@@ -22,6 +22,53 @@
   margin-top: 72px;
 }
 
+.blog-subscribe {
+  margin: 56px 0 16px;
+  padding: 28px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: grid;
+  gap: 18px;
+}
+
+.blog-subscribe h3 {
+  margin: 0 0 8px;
+  color: var(--color-title);
+  font-size: 20px;
+}
+
+.blog-subscribe p {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.blog-subscribe__form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+}
+
+.blog-subscribe__form input {
+  background: #0f0f0f;
+  border: 1px solid var(--color-border);
+  padding: 12px 14px;
+  color: var(--color-title);
+}
+
+.blog-subscribe__form button {
+  background: var(--color-title);
+  color: #0b0b0b;
+  border: none;
+  padding: 12px 18px;
+  font-weight: 700;
+}
+
+.blog-subscribe__message {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
 .blog-topics__header {
   display: flex;
   align-items: flex-start;
@@ -85,5 +132,14 @@
 @media (max-width: 900px) {
   .blog-page {
     padding: 72px 0 96px;
+  }
+
+  .blog-subscribe {
+    margin: 40px 0 8px;
+    padding: 20px;
+  }
+
+  .blog-subscribe__form {
+    grid-template-columns: 1fr;
   }
 }
